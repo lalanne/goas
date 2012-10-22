@@ -17,5 +17,7 @@ add_executable(bin/par
       ${FLEX_MyScanner_OUTPUTS})
 
 add_subdirectory(src) 
+
+
 INSTALL(TARGETS bin/par  DESTINATION ${OAS_SRC_DIR}/bin)
 
