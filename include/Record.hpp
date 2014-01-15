@@ -229,6 +229,7 @@ bool Record::is(std::vector<std::string> predicate){//single predicate
         else if(!op.compare("<")) return field < tmp;
         else if(!op.compare(">")) return field > tmp;
     }
+    return false;
 }
 
 #endif //RECORD_W98HRG9WEH8RG9W8HERG98WHERG
