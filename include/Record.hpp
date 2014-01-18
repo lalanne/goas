@@ -191,38 +191,32 @@ bool Record::is(std::vector<std::string> predicate){//single predicate
 
         if(op.compare("=")){
             field.print();
-            std::cout<<"="<<op2<<std::endl;
             if(strcmp(field.raw_ptr(), op2.c_str()) == 0) return true;    
             return false;
         }
         else if(op.compare("<")){
             field.print();
-            std::cout<<"<"<<op2<<std::endl;
             if(strcmp(field.raw_ptr(), op2.c_str())<0) return true;
             return false;
         }
         else if(op.compare(">")){
             field.print();
-            std::cout<<">"<<op2<<std::endl;
             if(strcmp(field.raw_ptr(), op2.c_str())>0) return true;
             return false;
         }
     }
     else{
-        std::cout<<"here!"<<std::endl;
         unsigned int number_of_ints = 0;
         for(unsigned int x = 0; x <= keys_indexes[0]; ++x){
             if(meta->get_type(x) == TYPE_INTEGER) ++number_of_ints;
         }
-        std::cout<<"here1!"<<std::endl;
 
         IntegerField field = container_IF[number_of_ints-1]; 
         IntegerField tmp(atoi(op2.c_str()));
         field.print();
-        std::cout<<op;
+        //std::cout<<op;
         tmp.print();
         std::cout<<"\n";
-        std::cout<<"here2!"<<std::endl;
 
 
         if(!op.compare("=")) return field == tmp;    

@@ -12,27 +12,17 @@ IntegerField::IntegerField(const IntegerField& other):field(other.field){}
 IntegerField& IntegerField::operator=(const IntegerField& other){
     field = other.field;
     return *this;
-
-
-
-
-
-
-
 }
 
 bool IntegerField::operator==(const IntegerField& other) const{
-    cout<<" == "<<endl;
     return field == other.field;
 }
 
 bool IntegerField::operator<(const IntegerField& other) const{
-    cout<<" < "<<endl;
     return field < other.field;    
 }
 
 bool IntegerField::operator>(const IntegerField& other) const{
-    cout<<" > "<<endl;
     return field > other.field;    
 }
 
