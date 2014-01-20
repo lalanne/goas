@@ -1,12 +1,23 @@
-//#include "IntegerField.hpp"
+#include "ImportStrategy.hpp"
 
 #include <gtest/gtest.h>
 
+#include <string>
+
 using namespace std;
 
+class DummyStrategy : public ImportStrategy{
+    public:
+        DummyStrategy(string file_name){}
+
+        void import_meta_data(){}
+        void import_data(){}
+};
+
 TEST(ImportStrategyTests, dummy){
-    //IntegerField x(5);
-    auto dummy_strategy = make_unique<DummyStrategy>
+    unique_ptr<ImportStrategy> dummy_strategy(new DummyStrategy("file_name"));
+    dummy_strategy->import_meta_data();
+    dummy_strategy->import_data();
 
     EXPECT_EQ(1, 0);
 }
