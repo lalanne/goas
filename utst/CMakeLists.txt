@@ -13,6 +13,7 @@ SET(SOURCES
     tests.cpp
     IntegerFieldTests.cpp
     RawStringFieldTests.cpp
+    ImportStrategyTests.cpp
     MetaTests.cpp
     RecordTests.cpp
     MetaBasicPopulator.cpp
