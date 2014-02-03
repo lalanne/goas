@@ -1,6 +1,7 @@
 
 #include "MMapBinaryImportStrategy.hpp"
 #include "NotFileFoundException.hpp"
+#include "StringUtilities.hpp"
 
 #include <iostream>
 #include <fcntl.h>
@@ -34,26 +35,30 @@ void MMapBinaryImportStrategy::open_file(){
     }
 }
 
-void MMapBinaryImportStrategy::import_meta_data(){
+Meta MMapBinaryImportStrategy::import_meta_data(){
     unsigned short n_columns;
+    Meta meta;
+
     memcpy(&n_columns, data, sizeof(n_columns));
     data = data + sizeof(n_columns);
-    meta->set_columns(n_columns);
+    meta.set_columns(n_columns);
 
     unsigned int n_rows;
     memcpy(&n_rows, data, sizeof(n_rows));
     data = data + sizeof(n_rows);
-    meta->set_rows(n_rows);
+    meta.set_rows(n_rows);
 
     for(int i = 0; i< n_columns; ++i){
         char type_column;
         memcpy(&type_column, data, sizeof(type_column));
         data = data + sizeof(type_column);
-        meta->add_column_type(type_column);
+        meta.add_column_type(type_column);
 
         string column_name = StringUtilities::read_string_type(data);
-        meta->add_column_name(column_name);
+        meta.add_column_name(column_name);
     }
+    
+    return meta;
 }
 
 void MMapBinaryImportStrategy::import_data(){
