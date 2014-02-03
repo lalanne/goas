@@ -2,6 +2,7 @@
 #define MMAP_BINARY_IMPORT_STRATEGY_38EFH98WHEF9WH8FE9HW
 
 #include "ImportStrategy.hpp"
+#include "Meta.hpp"
 
 #include <string>
 
@@ -11,7 +12,7 @@ class MMapBinaryImportStrategy : public ImportStrategy{
         MMapBinaryImportStrategy(std::string file_name);
 
         void open_file();
-        void import_meta_data();
+        Meta import_meta_data();
         void import_data();
 
     private:
