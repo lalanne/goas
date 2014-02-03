@@ -16,6 +16,7 @@ SET(SOURCES
     StringUtilities.cpp
     IntegerField.cpp
     RawStringField.cpp
+    MMapBinaryImportStrategy.cpp
 )
 
 ADD_LIBRARY(${LIBNAME} STATIC ${SOURCES})
