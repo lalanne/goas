@@ -1,4 +1,5 @@
 #include "ImportStrategy.hpp"
+#include "MMapBinaryImportStrategy.hpp"
 
 #include <gtest/gtest.h>
 
@@ -15,12 +16,22 @@ class DummyStrategy : public ImportStrategy{
         void import_data(){}
 };
 
-TEST(ImportStrategyTests, dummy){
-    unique_ptr<ImportStrategy> dummy_strategy(new DummyStrategy("file_name"));
-    dummy_strategy->open_file();
-    dummy_strategy->import_meta_data();
-    dummy_strategy->import_data();
+TEST(ImportStrategyTests, dummy_import){
+    unique_ptr<ImportStrategy> import_strategy(new DummyStrategy("dummy_file_name"));
+    import_strategy->open_file();
+    import_strategy->import_meta_data();
+    import_strategy->import_data();
 
     EXPECT_EQ(1, 0);
 }
+
+TEST(ImportStrategyTests, mmap_binary_import){
+    unique_ptr<ImportStrategy> import_strategy(new MMapBinaryImportStrategy("binary_file_name"));
+    import_strategy->open_file();
+    import_strategy->import_meta_data();
+    import_strategy->import_data();
+
+    EXPECT_EQ(1, 0);
+}
+
 
