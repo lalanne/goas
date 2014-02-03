@@ -16,6 +16,9 @@ using namespace std;
 
 MMapLinux::MMapLinux(const string file):file(file){}
 
+
+//leaking resources when a return or an exception is executed 
+//or thrown, need to use some RAII here!!!!
 void MMapLinux::open_file(){
     struct stat sb;
     int fd = open(file.c_str(), O_RDONLY);
@@ -37,6 +40,9 @@ void MMapLinux::open_file(){
     }
 }
 
+//using a target argument (argument that is filled for the method),
+//not natural use the returning by move, to create an object internally that is 
+//returned or maybe use the RVO.
 void MMapLinux::set_meta(Meta* meta){
     unsigned short n_columns;
     memcpy(&n_columns, data, sizeof(n_columns));
