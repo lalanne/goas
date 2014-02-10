@@ -21,10 +21,6 @@ class Meta{
         std::string get_name(const unsigned int index) const;
         unsigned short integers_in_record() const;
         unsigned short strings_in_record() const;
-        std::vector<std::string> keys_intersection(const std::vector<std::string>& keys) const;
-        std::vector<unsigned int> keys_indexes(const std::vector<std::string>& keys) const;
-        void remove(std::vector<unsigned int>& indexes);
-        bool is_present(std::string& field);
        
     private:
         unsigned short ints_in_record;

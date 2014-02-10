@@ -1,0 +1,8 @@
+#ifndef NOT_FILE_FOUND_EXCEPTION_98HEGR9Q8EHRG9Q8HERG
+#define NOT_FILE_FOUND_EXCEPTION_98HEGR9Q8EHRG9Q8HERG
+
+#include <exception>
+
+class NotFileFoundException : public std::exception{};
+
+#endif //NOT_FILE_FOUND_EXCEPTION_98HEGR9Q8EHRG9Q8HERG

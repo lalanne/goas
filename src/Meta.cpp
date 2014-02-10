@@ -80,49 +80,5 @@ unsigned short Meta::strings_in_record() const{
     return strs_in_record;    
 }
 
-/*interesting trade off, if i sorted the arrays im going to lose time
- * copying strings from one array to another, because i dont want to 
- * destroy the inputs arrays, copying I will achieved O(nlog(n)) without
- * considering the copies, if i dont do copies, i can do the O(n^2) approach,
- * but avoiding the copies and the extra data structures, because like I said
- * I cannot destroy the input vectors.*/
-vector<string> Meta::keys_intersection(const vector<string>& keys) const{
-    vector<string> result;
-    for(auto a:keys){
-        for(auto b:column_names){
-            if(a.compare(b) == 0){
-                result.push_back(a);
-            }
-        }
-    }
-    return result;
-}
-
-vector<unsigned int> Meta::keys_indexes(const vector<string>& keys) const{
-    vector<unsigned int> result;
-    for(auto i:keys){
-        auto it = find(column_names.begin(), column_names.end(), i);
-        result.push_back(distance(column_names.begin(), it));
-    }
-    return result;
-}
-
-void Meta::remove(vector<unsigned int>& indexes){
-    /*fix this, is not safe client must put the keys in order to success in the removal*/
-    unsigned int count = 0;
-    for(auto& i : indexes){
-        column_names.erase(column_names.begin()+i-count);
-        if(column_types[i-count] == TYPE_INTEGER) --ints_in_record;
-        else --strs_in_record;
-        column_types.erase(column_types.begin()+i-count);
-        --n_columns;
-        ++count;
-    }    
-}
-
-bool Meta::is_present(string& field){
-    if(find(column_names.begin(), column_names.end(), field) == column_names.end()) return false;
-    return true;
-}
 
 

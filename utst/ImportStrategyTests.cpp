@@ -64,14 +64,14 @@ class DummyStrategy : public ImportStrategy{
         void import_data(){}
 };
 
-TEST(ImportStrategyTests, dummy_import){
+/*TEST(ImportStrategyTests, dummy_import){
     unique_ptr<ImportStrategy> import_strategy(new DummyStrategy("dummy_file_name"));
     import_strategy->open_file();
     import_strategy->import_meta_data();
     import_strategy->import_data();
 
     EXPECT_EQ(1, 0);
-}
+}*/
 
 TEST(ImportStrategyTests, no_file_found_by_mmap_binary_strategy_import){
     unique_ptr<ImportStrategy> import_strategy(new MMapBinaryImportStrategy("binary_file_name"));
