@@ -89,5 +89,25 @@ TEST(ImportStrategyTests, meta_mmap_binary_strategy_import){
     EXPECT_TRUE(expected_meta == meta);
 }
 
+TEST(ImportStrategyTests, whishful_thinking){
+    /*Fucking configurable algorithms*/
+
+    /*How im going to read the file from disk*/
+    /*----------------------------------------*/
+    /*Format of the file: text, binary*/
+    /*Strategy to read: memory map, no memory map*/
+    /*Meta data, No meta data*/
+
+    BinaryImport binary_import; //TextImport
+    MemoryMap memory_map; //NoMemoryMap
+    MetaData meta_data; //NoMetaData
+
+    ImportStrategy<binary_import, memory_map, meta_data> import("test_file.dat");
+    Meta meta = import.meta();
+    Relation relation = import.relation()
+
+    EXPECT_TRUE(false);
+}
+
 
 

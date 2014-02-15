@@ -1,5 +1,5 @@
 
-#include "MMapBinaryImportStrategy.hpp"
+#include "MemoryMap.hpp"
 #include "NotFileFoundException.hpp"
 #include "StringUtilities.hpp"
 
@@ -10,10 +10,10 @@
 
 using namespace std;
 
-MMapBinaryImportStrategy::MMapBinaryImportStrategy(string file_name) : _file_name(file_name){}
+MemoryMap::MemoryMap(string file_name) : _file_name(file_name){}
 
 /*it is necessary to create an error handling system through exceptions*/
-void MMapBinaryImportStrategy::open_file(){
+void MemoryMap::open_file(){
     struct stat sb;
     int fd = open(_file_name.c_str(), O_RDONLY);
     if(fd == -1){
@@ -35,7 +35,7 @@ void MMapBinaryImportStrategy::open_file(){
     }
 }
 
-Meta MMapBinaryImportStrategy::import_meta_data(){
+Meta MemoryMap::import_meta_data(){
     unsigned short n_columns;
     Meta meta;
 
@@ -61,7 +61,7 @@ Meta MMapBinaryImportStrategy::import_meta_data(){
     return meta;
 }
 
-void MMapBinaryImportStrategy::import_data(){
+void MemoryMap::import_data(){
     cout<<"importing data from "<<_file_name<<"\n";
 }
 

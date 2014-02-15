@@ -6,10 +6,10 @@
 
 #include <string>
 
-class MMapBinaryImportStrategy : public ImportStrategy{
+class MemoryMap : public ImportStrategy{
     
     public:
-        MMapBinaryImportStrategy(std::string file_name);
+        MemoryMap(std::string file_name);
 
         void open_file();
         Meta import_meta_data();

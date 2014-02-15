@@ -1,0 +1,7 @@
+
+#ifndef BINARY_IMPORT_9Q8HF98QWEHF9HQWEF
+#define BINARY_IMPORT_9Q8HF98QWEHF9HQWEF
+
+struct BinaryImport{};
+
+#endif
