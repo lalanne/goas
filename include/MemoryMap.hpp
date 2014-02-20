@@ -1,14 +1,14 @@
-#ifndef MMAP_BINARY_IMPORT_STRATEGY_38EFH98WHEF9WH8FE9HW
-#define MMAP_BINARY_IMPORT_STRATEGY_38EFH98WHEF9WH8FE9HW
+#ifndef MEMORY_MAP_38EFH98WHEF9WH8FE9HW
+#define MEMORY_MAP_38EFH98WHEF9WH8FE9HW
 
-#include "ImportStrategy.hpp"
 #include "Meta.hpp"
 
 #include <string>
 
-class MemoryMap : public ImportStrategy{
+class MemoryMap{
     
     public:
+        MemoryMap();
         MemoryMap(std::string file_name);
 
         void open_file();
@@ -20,5 +20,5 @@ class MemoryMap : public ImportStrategy{
         char* data;
 };
 
-#endif //MMAP_BINARY_IMPORT_STRATEGY_38EFH98WHEF9WH8FE9HW
+#endif //MEMORY_MAP_38EFH98WHEF9WH8FE9HW
 

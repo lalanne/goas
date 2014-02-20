@@ -1,11 +1,14 @@
 #include "ImportStrategy.hpp"
-#include "MMapBinaryImportStrategy.hpp"
+#include "MemoryMap.hpp"
+#include "MetaData.hpp"
 #include "NotFileFoundException.hpp"
 #include "Meta.hpp"
+#include "BinaryImport.hpp"
 
 #include <gtest/gtest.h>
 
 #include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -55,7 +58,7 @@ Meta set_expected_meta(){
 }
 
 
-class DummyStrategy : public ImportStrategy{
+class DummyStrategy {
     public:
         DummyStrategy(string file_name){}
 
@@ -73,8 +76,11 @@ class DummyStrategy : public ImportStrategy{
     EXPECT_EQ(1, 0);
 }*/
 
-TEST(ImportStrategyTests, no_file_found_by_mmap_binary_strategy_import){
-    unique_ptr<ImportStrategy> import_strategy(new MMapBinaryImportStrategy("binary_file_name"));
+
+//this test should not be here!
+//this should be where I test the concrete open, not the design!
+/*TEST(ImportStrategyTests, no_file_found_by_mmap_binary_strategy_import){
+    unique_ptr<ImportStrategy> import_strategy(new MemoryMap("binary_file_name"));
 
     EXPECT_THROW(import_strategy->open_file(), NotFileFoundException);
 }
@@ -82,12 +88,12 @@ TEST(ImportStrategyTests, no_file_found_by_mmap_binary_strategy_import){
 TEST(ImportStrategyTests, meta_mmap_binary_strategy_import){
     Meta expected_meta = set_expected_meta();
 
-    unique_ptr<ImportStrategy> import_strategy(new MMapBinaryImportStrategy("binary_file_10_rows.dat"));
+    unique_ptr<ImportStrategy> import_strategy(new MemoryMap("binary_file_10_rows.dat"));
     import_strategy->open_file();
     Meta meta = import_strategy->import_meta_data();
 
     EXPECT_TRUE(expected_meta == meta);
-}
+}*/
 
 TEST(ImportStrategyTests, whishful_thinking){
     /*Fucking configurable algorithms*/
@@ -98,13 +104,17 @@ TEST(ImportStrategyTests, whishful_thinking){
     /*Strategy to read: memory map, no memory map*/
     /*Meta data, No meta data*/
 
-    BinaryImport binary_import; //TextImport
-    MemoryMap memory_map; //NoMemoryMap
-    MetaData meta_data; //NoMetaData
+    //BinaryImport binary_import; //TextImport
+    //MemoryMap memory_map; //NoMemoryMap
+    //MetaData meta_data; //NoMetaData
 
-    ImportStrategy<binary_import, memory_map, meta_data> import("test_file.dat");
+    cout<<"1\n";
+    ImportStrategy<BinaryImport, MemoryMap, MetaData> import("test_file.dat");
+    cout<<"2\n";
     Meta meta = import.meta();
-    Relation relation = import.relation()
+    cout<<"3\n";
+    Relation relation = import.relation();
+    cout<<"4\n";
 
     EXPECT_TRUE(false);
 }

@@ -10,6 +10,7 @@
 
 using namespace std;
 
+MemoryMap::MemoryMap() {}
 MemoryMap::MemoryMap(string file_name) : _file_name(file_name){}
 
 /*it is necessary to create an error handling system through exceptions*/
