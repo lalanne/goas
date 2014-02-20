@@ -109,11 +109,11 @@ TEST(ImportStrategyTests, whishful_thinking){
     //MetaData meta_data; //NoMetaData
 
     cout<<"1\n";
-    ImportStrategy<BinaryImport, MemoryMap, MetaData> import("test_file.dat");
+    ImportStrategy<BinaryImport, MemoryMap, MetaData> import("binary_file_10_rows.dat");
     cout<<"2\n";
     Meta meta = import.meta();
     cout<<"3\n";
-    Relation relation = import.relation();
+    //Relation relation = import.relation();
     cout<<"4\n";
 
     EXPECT_TRUE(false);

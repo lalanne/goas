@@ -12,7 +12,8 @@ class ImportStrategy{
     public:
         ImportStrategy(std::string file_name);
         
-        Meta meta() const {}
+        /*meta() should be const*/
+        Meta meta();
         Relation relation() const {}
 
     private:
@@ -28,5 +29,10 @@ ImportStrategy<FormatPolicy, MemoryMappingPolicy, MetaDataPolicy>::ImportStrateg
     std::cout<<"name of file: "<<_file_name<<"\n";
     _map.open_file();
 } 
+
+template<typename FormatPolicy, typename MemoryMappingPolicy, typename MetaDataPolicy>
+Meta ImportStrategy<FormatPolicy, MemoryMappingPolicy, MetaDataPolicy>::meta(){
+    return _map.import_meta_data();
+}
 
 #endif //IMPORT_STRATEGY_9Q87HE9Q8HE9F8HWE
