@@ -8,7 +8,7 @@
 class Meta{
     public:
         Meta();
-        bool operator==(const Meta& other) const;
+        //bool operator==(const Meta& other) const;
 
         void print() const;
         unsigned short columns() const;

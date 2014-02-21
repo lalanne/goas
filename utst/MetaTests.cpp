@@ -25,7 +25,7 @@ TEST(MetaTests, number_of_integers_and_strings_in_a_record){
     EXPECT_EQ(expected_integers, meta.integers_in_record());
 }
 
-TEST(MetaTests, copy_constructor){
+/*TEST(MetaTests, copy_constructor){
     const unsigned int rows = 100;
     const unsigned short columns = 16;
 
@@ -40,9 +40,9 @@ TEST(MetaTests, copy_constructor){
     Meta new_meta(meta);
 
     EXPECT_EQ(new_meta, meta);
-}
+}*/
 
-TEST(MetaTests, assignment){
+/*TEST(MetaTests, assignment){
     const unsigned int rows = 100;
     const unsigned short columns = 16;
 
@@ -64,7 +64,7 @@ TEST(MetaTests, assignment){
     new_meta = meta;
 
     EXPECT_EQ(new_meta, meta);
-}
+}*/
 
 
 

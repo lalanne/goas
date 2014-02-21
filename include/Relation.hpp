@@ -10,20 +10,15 @@ class Record;
 
 class Relation{
     public:
-        Relation();
-        ~Relation();
-
-        void add_record(Record* rec);
-        Meta* get_meta();
+        void add_record(Record rec);
+        Meta get_meta();
         void print() const;
         void set_size();
-        void sort_ascendant(std::vector<unsigned int>& indexes);
-        void sort_descendant(std::vector<unsigned int>& indexes);
         void project(std::vector<unsigned int>& indexes);
         void erase(std::vector<std::string>& predicates);
 
     private:
-        std::vector<Record*> records;
+        std::vector<Record> records;
         Meta meta;
         std::vector<std::string> predicates;
 };

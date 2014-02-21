@@ -40,7 +40,7 @@ class RecordBasicPopulator{
         
 };
 
-TEST(RecordTests, record_creation){
+/*TEST(RecordTests, record_creation){
     const unsigned int rows = 1;
     const unsigned short columns = 16;
 
@@ -57,9 +57,9 @@ TEST(RecordTests, record_creation){
     record_populator();
 
     EXPECT_EQ(columns, record.size());
-}
+}*/
 
-TEST(RecordTests, copy_constructor){
+/*TEST(RecordTests, copy_constructor){
     const unsigned int rows = 1;
     const unsigned short columns = 16;
 
@@ -78,9 +78,9 @@ TEST(RecordTests, copy_constructor){
     Record new_record(record);
 
     EXPECT_EQ(new_record, record);
-}
+}*/
 
-TEST(RecordTests, assignment){
+/*TEST(RecordTests, assignment){
     const unsigned int rows = 1;
     const unsigned short columns = 16;
 
@@ -103,9 +103,9 @@ TEST(RecordTests, assignment){
     record = new_record;
 
     EXPECT_EQ(new_record, record);
-}
+}*/
 
-TEST(RecordTests, less_than){
+/*TEST(RecordTests, less_than){
     const unsigned int rows = 1;
     const unsigned short columns = 5;
 
@@ -158,7 +158,7 @@ TEST(RecordTests, less_than){
     indexes.push_back(3);
 
     EXPECT_TRUE(a.less_than(b, indexes));
-}
+}*/
 
 
 

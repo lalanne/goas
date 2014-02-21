@@ -13,7 +13,7 @@
 
 class Record{
     public:
-        Record(const unsigned int size, Meta* meta);
+        Record(const unsigned int size, Meta meta);
         bool operator==(const Record& other) const;
 
         bool less_than(const Record& other, std::vector<unsigned int>& indexes) const;
@@ -28,45 +28,44 @@ class Record{
     private:
         std::vector<IntegerField> container_IF;
         std::vector<RawStringField> container_SF;
-        Meta* meta;/*this has to be a pointer to 
-                    provide value semantics to this type*/
+        Meta meta;
 };
 
 inline
-Record::Record(const unsigned int size, Meta* meta):meta(meta){
+Record::Record(const unsigned int size, Meta meta):meta(meta){
     /*not further allocation of memory after this
     avoid wastefull copies, size is the number of 
     columns in the relation*/
-    container_IF.reserve(meta->integers_in_record());    
-    container_SF.reserve(meta->strings_in_record()); 
+    container_IF.reserve(meta.integers_in_record());    
+    container_SF.reserve(meta.strings_in_record()); 
 }
 
-inline 
-bool Record::operator==(const Record& other) const{
-    bool cont_if = equal(container_IF.begin(), container_IF.end(), other.container_IF.begin());
-    bool cont_sf = equal(container_SF.begin(), container_SF.end(), other.container_SF.begin());
+//inline 
+//bool Record::operator==(const Record& other) const{
+    //bool cont_if = equal(container_IF.begin(), container_IF.end(), other.container_IF.begin());
+    //bool cont_sf = equal(container_SF.begin(), container_SF.end(), other.container_SF.begin());
 
-    return cont_if && cont_sf && (meta == other.meta);
-}
+    //return cont_if && cont_sf && (meta == other.meta);
+//}
 
 /*I dont like it, is inneficient, transversing every time part of the record to get the right field!!!!!
  * maybe sacrifice a little time in scanning and put there the information already in record*/
 inline 
 bool Record::less_than(const Record& other, std::vector<unsigned int>& indexes) const{
     for(unsigned int i = 0; i < indexes.size(); ++i){
-        if(meta->get_type(indexes[i]) == TYPE_INTEGER){
+        if(meta.get_type(indexes[i]) == TYPE_INTEGER){
             unsigned int number_of_integers = 0;
             for(unsigned int x = 0; x <= indexes[i]; ++x){
-                if(meta->get_type(x) == TYPE_INTEGER) ++number_of_integers;
+                if(meta.get_type(x) == TYPE_INTEGER) ++number_of_integers;
             }
 
             if(this->container_IF[number_of_integers-1] < other.container_IF[number_of_integers-1]) return true;
             if(this->container_IF[number_of_integers-1] > other.container_IF[number_of_integers-1]) return false;
         }
-        if(meta->get_type(indexes[i]) == TYPE_STRING){
+        if(meta.get_type(indexes[i]) == TYPE_STRING){
             unsigned int number_of_strings = 0;
             for(unsigned int x = 0; x <= indexes[i]; ++x){
-                if(meta->get_type(x) == TYPE_STRING) ++number_of_strings;
+                if(meta.get_type(x) == TYPE_STRING) ++number_of_strings;
             }
 
             if(this->container_SF[number_of_strings-1] < other.container_SF[number_of_strings-1]) return true;
@@ -96,7 +95,7 @@ unsigned int Record::size() const{
 
 inline
 void Record::print() const{
-    unsigned number_of_columns = meta->columns();
+    unsigned number_of_columns = meta.columns();
     unsigned int SF_index = 0;
     unsigned int IF_index = 0;
 
@@ -108,15 +107,15 @@ void Record::print() const{
 
     for(int i=0; i<number_of_columns; ++i){
 
-        if(meta->get_type(i)==TYPE_STRING){
-            unsigned int len = meta->get_name(i).size() + padding_string - container_SF[SF_index].length();
+        if(meta.get_type(i)==TYPE_STRING){
+            unsigned int len = meta.get_name(i).size() + padding_string - container_SF[SF_index].length();
             for(int k = 0; k < len; ++k) cout<<" ";
             container_SF[SF_index].print(); 
             cout<<" |";
             ++SF_index;
         }
-        else if(meta->get_type(i)==TYPE_INTEGER){
-            unsigned int len = meta->get_name(i).size() + padding_integer - container_IF[IF_index].number_of_digits();
+        else if(meta.get_type(i)==TYPE_INTEGER){
+            unsigned int len = meta.get_name(i).size() + padding_integer - container_IF[IF_index].number_of_digits();
             for(int k = 0; k < len; ++k) cout<<" ";
             container_IF[IF_index].print();    
             cout<<" |";
@@ -130,7 +129,7 @@ void Record::print() const{
 inline
 void Record::remove(std::vector<unsigned int> indexes){
     std::vector<int> types;
-    for(auto& i:indexes) types.push_back(meta->get_type(i));
+    for(auto& i:indexes) types.push_back(meta.get_type(i));
     
     std::vector<unsigned int> indexes_original(indexes.size());
     std::copy(indexes.begin(), indexes.end(), indexes_original.begin());
@@ -142,7 +141,7 @@ void Record::remove(std::vector<unsigned int> indexes){
         if(types[i] == TYPE_STRING){
             unsigned int number_of_strings = 0;
             for(unsigned int x = 0; x <= indexes_original[i]; ++x){
-                if(meta->get_type(x) == TYPE_STRING) ++number_of_strings;
+                if(meta.get_type(x) == TYPE_STRING) ++number_of_strings;
             }
             unsigned int index = 0;
             if(number_of_strings == 0) index = 0;
@@ -154,7 +153,7 @@ void Record::remove(std::vector<unsigned int> indexes){
         else{
             unsigned int number_of_integers = 0;
             for(unsigned int x = 0; x <= indexes_original[i]; ++x){
-                if(meta->get_type(x) == TYPE_INTEGER) ++number_of_integers;
+                if(meta.get_type(x) == TYPE_INTEGER) ++number_of_integers;
             }
             unsigned int index = 0;
             if(number_of_integers == 0) index = 0;

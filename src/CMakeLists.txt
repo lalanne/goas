@@ -11,7 +11,7 @@ SET(SOURCES
 #    sort.cpp
 #    project.cpp
 #    select.cpp
-    MMapLinux.cpp
+#    MMapLinux.cpp
     Meta.cpp
     StringUtilities.cpp
     IntegerField.cpp

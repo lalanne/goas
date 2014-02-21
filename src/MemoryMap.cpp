@@ -2,6 +2,9 @@
 #include "MemoryMap.hpp"
 #include "NotFileFoundException.hpp"
 #include "StringUtilities.hpp"
+#include "IntegerField.hpp"
+#include "Constants.hpp"
+#include "Record.hpp"
 
 #include <iostream>
 #include <fcntl.h>
@@ -62,8 +65,35 @@ Meta MemoryMap::import_meta_data(){
     return meta;
 }
 
-void MemoryMap::import_data(){
-    cout<<"importing data from "<<_file_name<<"\n";
+Relation MemoryMap::import_data(Meta meta){
+    Relation relation;
+    unsigned int number_of_rows = meta.rows();
+    for(int i=0; i<number_of_rows; ++i){
+        unsigned int number_of_columns = meta.columns();
+        Record record(number_of_columns, meta);
+
+        for(int j=0; j<number_of_columns; ++j){
+            if(meta.get_type(j)==TYPE_INTEGER) {
+                int number = 0;
+                memcpy(&number, data, sizeof(number));
+                data = data + sizeof(int);
+
+                IntegerField tmp(number);
+                record.add(tmp);
+            }
+            else if(meta.get_type(j)==TYPE_STRING){
+                const unsigned int size = strlen(data) + 1;
+                RawStringField field(size);
+
+                memcpy(field.raw_ptr(), data, size);
+                data = data + size;
+
+                record.add(field);
+            }
+        }
+        relation.add_record(record);
+    }
+    return relation;
 }
 
 

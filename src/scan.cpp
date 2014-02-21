@@ -15,12 +15,12 @@
 using namespace std;
 
 void scan(const char* file_name, Relation& relation){
-    MMapLinux input(file_name);
+    //MMapLinux input(file_name);
 
-    input.open_file();
-    input.set_meta(relation.get_meta());
-    relation.set_size();
-    input.set_relation(relation);
+    //input.open_file();
+    //input.set_meta(relation.get_meta());
+    //relation.set_size();
+    //input.set_relation(relation);
 }
 
 
