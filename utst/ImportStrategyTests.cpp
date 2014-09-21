@@ -37,22 +37,11 @@ Meta set_expected_meta(){
     meta.add_column_name("stringu2");
     meta.add_column_name("stringu4");
 
-    meta.add_column_type(0);
-    meta.add_column_type(0);
-    meta.add_column_type(0);
-    meta.add_column_type(0);
-    meta.add_column_type(0);
-    meta.add_column_type(0);
-    meta.add_column_type(0);
-    meta.add_column_type(0);
-    meta.add_column_type(0);
-    meta.add_column_type(0);
-    meta.add_column_type(0);
-    meta.add_column_type(0);
-    meta.add_column_type(0);
-    meta.add_column_type(1);
-    meta.add_column_type(1);
-    meta.add_column_type(1);
+    const unsigned int number_of_integer_types = 13;
+    const unsigned int number_of_string_types = 3;
+
+    for(int i = 0; i<number_of_integer_types; ++i) meta.add_column_type(0);
+    for(int i = 0; i<number_of_string_types; ++i) meta.add_column_type(1);
 
     return meta;
 }
