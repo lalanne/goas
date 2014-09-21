@@ -95,28 +95,13 @@ TEST(ImportStrategyTests, meta_mmap_binary_strategy_import){
     EXPECT_TRUE(expected_meta == meta);
 }*/
 
-TEST(ImportStrategyTests, whishful_thinking){
-    /*Fucking configurable algorithms*/
-
-    /*How im going to read the file from disk*/
-    /*----------------------------------------*/
-    /*Format of the file: text, binary*/
-    /*Strategy to read: memory map, no memory map*/
-    /*Meta data, No meta data*/
-
-    //BinaryImport binary_import; //TextImport
-    //MemoryMap memory_map; //NoMemoryMap
-    //MetaData meta_data; //NoMetaData
-
-    cout<<"1\n";
-    ImportStrategy<BinaryImport, MemoryMap, MetaData> import("binary_file_10_rows.dat");
-    cout<<"2\n";
+TEST(ImportStrategyTests, basic_import_meta_BINARY_MEMORYMAP_METADATA){
+    ImportStrategy<BinaryImport, 
+                MemoryMap, 
+                MetaData> import("binary_file_10_rows.dat");
     Meta meta = import.meta();
-    cout<<"3\n";
-    //Relation relation = import.relation();
-    cout<<"4\n";
-
-    EXPECT_TRUE(false);
+    Meta expected_meta = set_expected_meta();
+    EXPECT_TRUE(expected_meta == meta);
 }
 
 

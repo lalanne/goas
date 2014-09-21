@@ -7,7 +7,9 @@
 #include <string>
 #include <iostream>
 
-template<typename FormatPolicy, typename MemoryMappingPolicy, typename MetaDataPolicy>
+template<typename FormatPolicy, 
+        typename MemoryMappingPolicy, 
+        typename MetaDataPolicy>
 class ImportStrategy{
     public:
         ImportStrategy(std::string file_name);
@@ -23,16 +25,27 @@ class ImportStrategy{
         std::string _file_name;
 };
 
-template<typename FormatPolicy, typename MemoryMappingPolicy, typename MetaDataPolicy>
-ImportStrategy<FormatPolicy, MemoryMappingPolicy, MetaDataPolicy>::ImportStrategy(std::string file_name) : 
-                                                                    _map(file_name), _file_name(file_name) {
+template<typename FormatPolicy, 
+        typename MemoryMappingPolicy, 
+        typename MetaDataPolicy>
+ImportStrategy<FormatPolicy, 
+            MemoryMappingPolicy, 
+            MetaDataPolicy>::ImportStrategy(std::string file_name) : 
+                            _map(file_name), _file_name(file_name){
     std::cout<<"name of file: "<<_file_name<<"\n";
     _map.open_file();
 } 
 
-template<typename FormatPolicy, typename MemoryMappingPolicy, typename MetaDataPolicy>
-Meta ImportStrategy<FormatPolicy, MemoryMappingPolicy, MetaDataPolicy>::meta(){
+template<typename FormatPolicy, 
+        typename MemoryMappingPolicy, 
+        typename MetaDataPolicy>
+Meta ImportStrategy<FormatPolicy, 
+                MemoryMappingPolicy, 
+                MetaDataPolicy>::meta(){
     return _map.import_meta_data();
 }
 
 #endif //IMPORT_STRATEGY_9Q87HE9Q8HE9F8HWE
+
+
+
