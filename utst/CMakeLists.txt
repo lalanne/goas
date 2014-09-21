@@ -11,13 +11,13 @@ LINK_DIRECTORIES(${PROJECT_SOURCE_DIR}/../lib)
 
 SET(SOURCES
     tests.cpp
-    IntegerFieldTests.cpp
-    RawStringFieldTests.cpp
+   # IntegerFieldTests.cpp
+   # RawStringFieldTests.cpp
     ImportStrategyTests.cpp
-    MetaTests.cpp
-    RecordTests.cpp
-    MetaBasicPopulator.cpp
-    RecordBasicPopulator.cpp
+   # MetaTests.cpp
+   # RecordTests.cpp
+   # MetaBasicPopulator.cpp
+   # RecordBasicPopulator.cpp
 )
 
 ADD_EXECUTABLE(${BINARY_NAME} ${SOURCES})
