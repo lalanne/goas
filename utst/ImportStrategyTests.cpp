@@ -63,15 +63,7 @@ class DummyStrategy {
         void import_data(){}
 };
 
-//this test should not be here!
-//this should be where I test the concrete open, not the design!
-/*TEST(ImportStrategyTests, no_file_found_by_mmap_binary_strategy_import){
-    unique_ptr<ImportStrategy> import_strategy(new MemoryMap("binary_file_name"));
-
-    EXPECT_THROW(import_strategy->open_file(), NotFileFoundException);
-}
-
-TEST(ImportStrategyTests, meta_mmap_binary_strategy_import){
+/*TEST(ImportStrategyTests, meta_mmap_binary_strategy_import){
     Meta expected_meta = set_expected_meta();
 
     unique_ptr<ImportStrategy> import_strategy(new MemoryMap("binary_file_10_rows.dat"));

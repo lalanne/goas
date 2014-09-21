@@ -14,6 +14,7 @@ SET(SOURCES
    # IntegerFieldTests.cpp
    # RawStringFieldTests.cpp
     ImportStrategyTests.cpp
+    MemoryMapTests.cpp
    # MetaTests.cpp
    # RecordTests.cpp
    # MetaBasicPopulator.cpp
