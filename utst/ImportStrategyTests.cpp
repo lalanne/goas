@@ -12,6 +12,9 @@
 
 using namespace std;
 
+const unsigned int INTEGER_TYPE = 0;
+const unsigned int STRING_TYPE = 1;
+
 Meta set_expected_meta(){
     Meta meta;
     const unsigned int columns_expected = 16;
@@ -40,8 +43,12 @@ Meta set_expected_meta(){
     const unsigned int number_of_integer_types = 13;
     const unsigned int number_of_string_types = 3;
 
-    for(int i = 0; i<number_of_integer_types; ++i) meta.add_column_type(0);
-    for(int i = 0; i<number_of_string_types; ++i) meta.add_column_type(1);
+    for(unsigned int i = 0; i<number_of_integer_types; ++i){
+        meta.add_column_type(INTEGER_TYPE);
+    }
+    for(unsigned int i = 0; i<number_of_string_types; ++i){
+        meta.add_column_type(STRING_TYPE);
+    }
 
     return meta;
 }
