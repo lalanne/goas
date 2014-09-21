@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <fcntl.h>
+#include <unistd.h>
 #include <sys/stat.h>
 #include <sys/mman.h>
 
@@ -15,10 +16,13 @@ using namespace std;
 MemoryMap::MemoryMap() {}
 MemoryMap::MemoryMap(string file_name) : _file_name(file_name){}
 
-/*it is necessary to create an error handling system through exceptions*/
+MemoryMap::~MemoryMap(){
+    close(fd);
+}
+
 void MemoryMap::open_file(){
     struct stat sb;
-    int fd = open(_file_name.c_str(), O_RDONLY);
+    fd = open(_file_name.c_str(), O_RDONLY);
     if(fd == -1){
         //leaking resource, no close call!!!!!
         throw NotFileFoundException();
