@@ -32,7 +32,6 @@ ImportStrategy<FormatPolicy,
             MemoryMappingPolicy, 
             MetaDataPolicy>::ImportStrategy(std::string file_name) : 
                             _map(file_name), _file_name(file_name){
-    std::cout<<"name of file: "<<_file_name<<"\n";
     _map.open_file();
 } 
 
