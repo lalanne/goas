@@ -14,7 +14,6 @@ class ImportStrategy{
     public:
         ImportStrategy(std::string file_name);
         
-        /*meta() should be const*/
         Meta meta();
         Relation relation() const {}
 
