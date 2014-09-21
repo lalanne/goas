@@ -11,12 +11,14 @@ class MemoryMap{
     public:
         MemoryMap();
         MemoryMap(std::string file_name);
+        ~MemoryMap();
 
         void open_file();
         Meta import_meta_data();
         Relation import_data(Meta meta);
 
     private:
+        int fd;
         std::string _file_name;
         char* data;
 };
