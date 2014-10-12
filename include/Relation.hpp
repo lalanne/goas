@@ -2,11 +2,12 @@
 #define RELATION_Q9HF9QWHEF98WHEF9
 
 #include "Meta.hpp"
+#include "Record.hpp"
 
 #include <vector>
 #include <string>
 
-class Record;
+//class Record;
 
 class Relation{
     public:

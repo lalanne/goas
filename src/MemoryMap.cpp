@@ -90,6 +90,7 @@ Relation MemoryMap::import_data(Meta meta){
         }
         relation.add_record(record);
     }
+    relation.print();
     return relation;
 }
 

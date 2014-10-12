@@ -15,7 +15,7 @@ class ImportStrategy{
         ImportStrategy(std::string file_name);
         
         Meta meta();
-        Relation relation() const {}
+        Relation relation(Meta meta);
 
     private:
         FormatPolicy _format;
@@ -42,6 +42,16 @@ Meta ImportStrategy<FormatPolicy,
                 MetaDataPolicy>::meta(){
     return _map.import_meta_data();
 }
+
+template<typename FormatPolicy, 
+        typename MemoryMappingPolicy, 
+        typename MetaDataPolicy>
+Relation ImportStrategy<FormatPolicy, 
+                MemoryMappingPolicy, 
+                MetaDataPolicy>::relation(Meta meta){
+    return _map.import_data(meta);
+}
+
 
 #endif //IMPORT_STRATEGY_9Q87HE9Q8HE9F8HWE
 

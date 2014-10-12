@@ -59,19 +59,14 @@ class DummyStrategy {
         DummyStrategy(string file_name){}
 
         void open_file() {}
-        Meta import_meta_data(){Meta meta; return meta;}
+        
+        Meta import_meta_data(){
+            Meta meta; 
+            return meta;
+        }
+        
         void import_data(){}
 };
-
-/*TEST(ImportStrategyTests, meta_mmap_binary_strategy_import){
-    Meta expected_meta = set_expected_meta();
-
-    unique_ptr<ImportStrategy> import_strategy(new MemoryMap("binary_file_10_rows.dat"));
-    import_strategy->open_file();
-    Meta meta = import_strategy->import_meta_data();
-
-    EXPECT_TRUE(expected_meta == meta);
-}*/
 
 TEST(ImportStrategyTests, basic_import_meta_BINARY_MEMORYMAP_METADATA){
     ImportStrategy<BinaryImport, 
@@ -81,6 +76,17 @@ TEST(ImportStrategyTests, basic_import_meta_BINARY_MEMORYMAP_METADATA){
     Meta expected_meta = set_expected_meta();
     EXPECT_TRUE(expected_meta == meta);
 }
+
+TEST(ImportStrategyTests, basic_import_meta_BINARY_MEMORYMAP_DATA){
+    ImportStrategy<BinaryImport, 
+                MemoryMap, 
+                MetaData> import("binary_file_10_rows.dat");
+    Meta meta = import.meta();
+    Relation relation = import.relation(meta);
+
+    EXPECT_EQ(1,0);
+}
+
 
 
 
