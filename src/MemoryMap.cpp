@@ -28,22 +28,12 @@ MemoryMap::~MemoryMap(){
 void MemoryMap::open_file(){
     struct stat sb;
     fd = open(_file_name.c_str(), O_RDONLY);
-    if(fd == -1){
-        throw NotFileFoundException();
-    }
-
-    if(fstat(fd, &sb) == -1){
-        throw ErrorInGettingStateOfFileException();
-    }
-
-    if(!S_ISREG(sb.st_mode)){
-        throw NotAFileException();
-    }
+    if(fd == -1) throw NotFileFoundException();
+    if(fstat(fd, &sb) == -1) throw ErrorInGettingStateOfFileException();
+    if(!S_ISREG(sb.st_mode)) throw NotAFileException();
 
     data = (char*)mmap(0, sb.st_size, PROT_READ, MAP_SHARED, fd, 0);
-    if(data == MAP_FAILED){
-        throw ErrorInMmapException();
-    }
+    if(data == MAP_FAILED) throw ErrorInMmapException();
 }
 
 Meta MemoryMap::import_meta_data(){
