@@ -1,6 +1,9 @@
 
 #include "MemoryMap.hpp"
 #include "NotFileFoundException.hpp"
+#include "NotAFileException.hpp"
+#include "ErrorInGettingStateOfFileException.hpp"
+#include "ErrorInMmapException.hpp"
 #include "StringUtilities.hpp"
 #include "IntegerField.hpp"
 #include "Record.hpp"
@@ -14,31 +17,32 @@
 using namespace std;
 
 MemoryMap::MemoryMap() {}
-MemoryMap::MemoryMap(string file_name) : _file_name(file_name){}
+MemoryMap::MemoryMap(string file_name) : _file_name{file_name}{}
 
 MemoryMap::~MemoryMap(){
     close(fd);
 }
 
+
+//check call to desctructor when exception is thrown
 void MemoryMap::open_file(){
     struct stat sb;
     fd = open(_file_name.c_str(), O_RDONLY);
     if(fd == -1){
-        //leaking resource, no close call!!!!!
         throw NotFileFoundException();
     }
 
     if(fstat(fd, &sb) == -1){
-        perror ("fstat");
+        throw ErrorInGettingStateOfFileException();
     }
 
     if(!S_ISREG(sb.st_mode)){
-        fprintf (stderr, "%s is not a file\n", _file_name.c_str());
+        throw NotAFileException();
     }
 
     data = (char*)mmap(0, sb.st_size, PROT_READ, MAP_SHARED, fd, 0);
     if(data == MAP_FAILED){
-        perror ("mmap");
+        throw ErrorInMmapException();
     }
 }
 
