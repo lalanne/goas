@@ -11,6 +11,8 @@
 
 class Relation{
     public:
+        bool operator==(const Relation& x) const;
+
         void add_record(Record rec);
         Meta get_meta();
         void print() const;

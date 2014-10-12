@@ -40,13 +40,17 @@ Record::Record(const unsigned int size, Meta meta):meta(meta){
     container_SF.reserve(meta.strings_in_record()); 
 }
 
-//inline 
-//bool Record::operator==(const Record& other) const{
-    //bool cont_if = equal(container_IF.begin(), container_IF.end(), other.container_IF.begin());
-    //bool cont_sf = equal(container_SF.begin(), container_SF.end(), other.container_SF.begin());
+inline 
+bool Record::operator==(const Record& other) const{
+    std::cout<<"== record 00000"<<std::endl;
 
-    //return cont_if && cont_sf && (meta == other.meta);
-//}
+    bool cont_if = equal(container_IF.begin(), container_IF.end(), other.container_IF.begin());
+    bool cont_sf = equal(container_SF.begin(), container_SF.end(), other.container_SF.begin());
+
+    std::cout<<"== record"<<std::endl;
+
+    return cont_if && cont_sf && (meta == other.meta);
+}
 
 /*I dont like it, is inneficient, transversing every time part of the record to get the right field!!!!!
  * maybe sacrifice a little time in scanning and put there the information already in record*/

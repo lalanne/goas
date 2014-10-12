@@ -53,20 +53,13 @@ Meta set_expected_meta(){
     return meta;
 }
 
+Relation set_expected_relation(Meta meta){
+    Relation relation;
+    Record record(16, meta);
+    
 
-class DummyStrategy {
-    public:
-        DummyStrategy(string file_name){}
-
-        void open_file() {}
-        
-        Meta import_meta_data(){
-            Meta meta; 
-            return meta;
-        }
-        
-        void import_data(){}
-};
+    return relation;
+}
 
 TEST(ImportStrategyTests, basic_import_meta_BINARY_MEMORYMAP_METADATA){
     ImportStrategy<BinaryImport, 
@@ -84,7 +77,11 @@ TEST(ImportStrategyTests, basic_import_meta_BINARY_MEMORYMAP_DATA){
     Meta meta = import.meta();
     Relation relation = import.relation(meta);
 
-    EXPECT_EQ(1,0);
+    relation.print();
+
+    Relation expected_relation = set_expected_relation(meta);
+
+    EXPECT_TRUE(expected_relation == relation);
 }
 
 
