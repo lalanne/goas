@@ -6,7 +6,7 @@
 #include <cstring>
 
 RawStringField::RawStringField(const unsigned int size):size(size),
-                                                        field(size? new char[size] : nullptr){}
+                                        field(size? new char[size] : nullptr){}
 
 RawStringField::~RawStringField(){
     if(field) {
@@ -16,7 +16,7 @@ RawStringField::~RawStringField(){
 }
 
 RawStringField::RawStringField(const RawStringField& other):size(other.size),
-                                                            field(size? new char[size] : nullptr){
+                                        field(size? new char[size] : nullptr){
     std::copy(other.field, other.field+size, field);
 }
 

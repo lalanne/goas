@@ -12,7 +12,7 @@ LINK_DIRECTORIES(${PROJECT_SOURCE_DIR}/../lib)
 SET(SOURCES
     tests.cpp
    # IntegerFieldTests.cpp
-   # RawStringFieldTests.cpp
+    RawStringFieldTests.cpp
     ImportStrategyTests.cpp
     MemoryMapTests.cpp
    # FileTests.cpp
