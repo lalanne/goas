@@ -42,12 +42,8 @@ Record::Record(const unsigned int size, Meta meta):meta(meta){
 
 inline 
 bool Record::operator==(const Record& other) const{
-    std::cout<<"== record 00000"<<std::endl;
-
     bool cont_if = equal(container_IF.begin(), container_IF.end(), other.container_IF.begin());
     bool cont_sf = equal(container_SF.begin(), container_SF.end(), other.container_SF.begin());
-
-    std::cout<<"== record"<<std::endl;
 
     return cont_if && cont_sf && (meta == other.meta);
 }

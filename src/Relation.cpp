@@ -8,9 +8,6 @@
 using namespace std;
 
 bool Relation::operator==(const Relation& y) const{
-    cout<<"size: "<<records.size()<<endl;
-    cout<<"size y: "<<y.records.size()<<endl;
-
     return records == y.records;
 }
 
