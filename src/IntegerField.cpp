@@ -5,6 +5,8 @@
 
 using namespace std;
 
+IntegerField::IntegerField():field{0}{}
+
 IntegerField::IntegerField(const int field):field(field){}
 
 IntegerField::IntegerField(const IntegerField& other):field(other.field){}

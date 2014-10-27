@@ -4,6 +4,7 @@
 
 class IntegerField{
     public:
+        IntegerField();
         IntegerField(const int field);
         IntegerField(const IntegerField& other);
         IntegerField& operator=(const IntegerField& other);

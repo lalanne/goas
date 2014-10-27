@@ -55,313 +55,66 @@ Meta set_expected_meta(){
     return meta;
 }
 
-Relation set_expected_relation(Meta meta){
-    Relation relation;
+void set_record(int numbers[13],
+                string strings[13],
+                Relation& relation,
+                Meta& meta){
     Record record(16, meta);
 
-    
-    IntegerField i(9);
-    record.add(i);
-    record.add(i = IntegerField(0));
-    record.add(i = IntegerField(1));
-    record.add(i = IntegerField(1));
-    record.add(i = IntegerField(9));
-    record.add(i = IntegerField(9));
-    record.add(i = IntegerField(9));
-    record.add(i = IntegerField(9));
-    record.add(i = IntegerField(4));
-    record.add(i = IntegerField(1));
-    record.add(i = IntegerField(9));
-    record.add(i = IntegerField(18));
-    record.add(i = IntegerField(19));
+    IntegerField x;
+    for(unsigned int i=0; i<13; ++i) record.add( x = IntegerField(numbers[i]));
 
-    char raw_h[] = "HHHHHHH";
-    RawStringField s_h(8);
-    memcpy(s_h.raw_ptr(), raw_h, 8);
-    record.add(s_h);
-
-    char raw_a[] = "AAAAAAA";
-    RawStringField s_a(8);
-    memcpy(s_a.raw_ptr(), raw_a, 8);
-    record.add(s_a);
-
-    RawStringField s_h1(8);
-    memcpy(s_h1.raw_ptr(), raw_h, 8);
-    record.add(s_h1);
-
-    Record record1(16, meta);
-
-    IntegerField i1(1);
-    record1.add(i1);
-    record1.add(i1 = IntegerField(1));
-    record1.add(i1 = IntegerField(1));
-    record1.add(i1 = IntegerField(1));
-    record1.add(i1 = IntegerField(1));
-    record1.add(i1 = IntegerField(1));
-    record1.add(i1 = IntegerField(1));
-    record1.add(i1 = IntegerField(1));
-    record1.add(i1 = IntegerField(1));
-    record1.add(i1 = IntegerField(1));
-    record1.add(i1 = IntegerField(1));
-    record1.add(i1 = IntegerField(2));
-    record1.add(i1 = IntegerField(3));
-
-    RawStringField s_h2(8);
-    memcpy(s_h2.raw_ptr(), raw_h, 8);
-    record1.add(s_h2);
-
-    RawStringField s_h3(8);
-    memcpy(s_h3.raw_ptr(), raw_h, 8);
-    record1.add(s_h3);
-
-    RawStringField s_h4(8);
-    memcpy(s_h4.raw_ptr(), raw_h, 8);
-    record1.add(s_h4);
-
-    Record record2(16, meta);
-
-    IntegerField i2(2);
-    record2.add(i2);
-    record2.add(i2 = IntegerField(2));
-    record2.add(i2 = IntegerField(0));
-    record2.add(i2 = IntegerField(2));
-    record2.add(i2 = IntegerField(2));
-    record2.add(i2 = IntegerField(2));
-    record2.add(i2 = IntegerField(2));
-    record2.add(i2 = IntegerField(2));
-    record2.add(i2 = IntegerField(2));
-    record2.add(i2 = IntegerField(0));
-    record2.add(i2 = IntegerField(2));
-    record2.add(i2 = IntegerField(4));
-    record2.add(i2 = IntegerField(5));
-
-    char raw_v[] = "VVVVVVV";
-    RawStringField s_v(8);
-    memcpy(s_v.raw_ptr(), raw_v, 8);
-    record2.add(s_v);
-
-    RawStringField s_v1(8);
-    memcpy(s_v1.raw_ptr(), raw_v, 8);
-    record2.add(s_v1);
-
-    RawStringField s_v2(8);
-    memcpy(s_v2.raw_ptr(), raw_v, 8);
-    record2.add(s_v2);
-
-    Record record3(16, meta);
-
-    IntegerField i3(3);
-    record3.add(i3);
-    record3.add(i3 = IntegerField(3));
-    record3.add(i3 = IntegerField(1));
-    record3.add(i3 = IntegerField(3));
-    record3.add(i3 = IntegerField(3));
-    record3.add(i3 = IntegerField(3));
-    record3.add(i3 = IntegerField(3));
-    record3.add(i3 = IntegerField(3));
-    record3.add(i3 = IntegerField(3));
-    record3.add(i3 = IntegerField(1));
-    record3.add(i3 = IntegerField(3));
-    record3.add(i3 = IntegerField(6));
-    record3.add(i3 = IntegerField(7));
-
-    char raw_o[] = "OOOOOOO";
-    RawStringField s_o(8);
-    memcpy(s_o.raw_ptr(), raw_o, 8);
-    record3.add(s_o);
-
-    RawStringField s_o1(8);
-    memcpy(s_o1.raw_ptr(), raw_o, 8);
-    record3.add(s_o1);
-
-    RawStringField s_o2(8);
-    memcpy(s_o2.raw_ptr(), raw_o, 8);
-    record3.add(s_o2);
-
-    Record record4(16, meta);
-
-    IntegerField i4(5);
-    record4.add(i4);
-    record4.add(i4 = IntegerField(4));
-    record4.add(i4 = IntegerField(1));
-    record4.add(i4 = IntegerField(1));
-    record4.add(i4 = IntegerField(5));
-    record4.add(i4 = IntegerField(5));
-    record4.add(i4 = IntegerField(5));
-    record4.add(i4 = IntegerField(5));
-    record4.add(i4 = IntegerField(0));
-    record4.add(i4 = IntegerField(1));
-    record4.add(i4 = IntegerField(5));
-    record4.add(i4 = IntegerField(10));
-    record4.add(i4 = IntegerField(11));
-
-    RawStringField s_h5(8);
-    memcpy(s_h5.raw_ptr(), raw_h, 8);
-    record4.add(s_h5);
-
-    RawStringField s_a1(8);
-    memcpy(s_a1.raw_ptr(), raw_a, 8);
-    record4.add(s_a1);
-
-    RawStringField s_h6(8);
-    memcpy(s_h6.raw_ptr(), raw_h, 8);
-    record4.add(s_h6);
-
-    Record record5(16, meta);
-
-    IntegerField i5(7);
-    record5.add(i5);
-    record5.add(i5 = IntegerField(5));
-    record5.add(i5 = IntegerField(1));
-    record5.add(i5 = IntegerField(3));
-    record5.add(i5 = IntegerField(7));
-    record5.add(i5 = IntegerField(7));
-    record5.add(i5 = IntegerField(7));
-    record5.add(i5 = IntegerField(7));
-    record5.add(i5 = IntegerField(2));
-    record5.add(i5 = IntegerField(1));
-    record5.add(i5 = IntegerField(7));
-    record5.add(i5 = IntegerField(14));
-    record5.add(i5 = IntegerField(15));
-
-    RawStringField s_o3(8);
-    memcpy(s_o3.raw_ptr(), raw_o, 8);
-    record5.add(s_o3);
-
-    RawStringField s_h7(8);
-    memcpy(s_h7.raw_ptr(), raw_h, 8);
-    record5.add(s_h7);
-
-    RawStringField s_o4(8);
-    memcpy(s_o4.raw_ptr(), raw_o, 8);
-    record5.add(s_o4);
-
-    Record record6(16, meta);
-
-    IntegerField i6(8);
-    record6.add(i6);
-    record6.add(i6 = IntegerField(6));
-    record6.add(i6 = IntegerField(0));
-    record6.add(i6 = IntegerField(0));
-    record6.add(i6 = IntegerField(8));
-    record6.add(i6 = IntegerField(8));
-    record6.add(i6 = IntegerField(8));
-    record6.add(i6 = IntegerField(8));
-    record6.add(i6 = IntegerField(3));
-    record6.add(i6 = IntegerField(0));
-    record6.add(i6 = IntegerField(8));
-    record6.add(i6 = IntegerField(16));
-    record6.add(i6 = IntegerField(17));
-
-    RawStringField s_a2(8);
-    memcpy(s_a2.raw_ptr(), raw_a, 8);
-    record6.add(s_a2);
-
-    RawStringField s_v3(8);
-    memcpy(s_v3.raw_ptr(), raw_v, 8);
-    record6.add(s_v3);
-
-    RawStringField s_a3(8);
-    memcpy(s_a3.raw_ptr(), raw_a, 8);
-    record6.add(s_a3);
-
-    Record record7(16, meta);
-
-    IntegerField i7(4);
-    record7.add(i7);
-    record7.add(i7 = IntegerField(7));
-    record7.add(i7 = IntegerField(0));
-    record7.add(i7 = IntegerField(0));
-    record7.add(i7 = IntegerField(4));
-    record7.add(i7 = IntegerField(4));
-    record7.add(i7 = IntegerField(4));
-    record7.add(i7 = IntegerField(4));
-    record7.add(i7 = IntegerField(4));
-    record7.add(i7 = IntegerField(0));
-    record7.add(i7 = IntegerField(4));
-    record7.add(i7 = IntegerField(8));
-    record7.add(i7 = IntegerField(9));
-
-    RawStringField s_a4(8);
-    memcpy(s_a4.raw_ptr(), raw_a, 8);
-    record7.add(s_a4);
-
-    RawStringField s_o6(8);
-    memcpy(s_o6.raw_ptr(), raw_o, 8);
-    record7.add(s_o6);
-
-    RawStringField s_a5(8);
-    memcpy(s_a5.raw_ptr(), raw_a, 8);
-    record7.add(s_a5);
-
-    Record record8(16, meta);
-
-    IntegerField i8(6);
-    record8.add(i8);
-    record8.add(i8 = IntegerField(8));
-    record8.add(i8 = IntegerField(0));
-    record8.add(i8 = IntegerField(2));
-    record8.add(i8 = IntegerField(6));
-    record8.add(i8 = IntegerField(6));
-    record8.add(i8 = IntegerField(6));
-    record8.add(i8 = IntegerField(6));
-    record8.add(i8 = IntegerField(1));
-    record8.add(i8 = IntegerField(0));
-    record8.add(i8 = IntegerField(6));
-    record8.add(i8 = IntegerField(12));
-    record8.add(i8 = IntegerField(13));
-
-    RawStringField s_v4(8);
-    memcpy(s_v4.raw_ptr(), raw_v, 8);
-    record8.add(s_v4);
-
-    RawStringField s_a6(8);
-    memcpy(s_a6.raw_ptr(), raw_a, 8);
-    record8.add(s_a6);
-
-    RawStringField s_v5(8);
-    memcpy(s_v5.raw_ptr(), raw_v, 8);
-    record8.add(s_v5);
-
-    Record record9(16, meta);
-
-    IntegerField i9(0);
-    record9.add(i9);
-    record9.add(i9 = IntegerField(9));
-    record9.add(i9 = IntegerField(0));
-    record9.add(i9 = IntegerField(0));
-    record9.add(i9 = IntegerField(0));
-    record9.add(i9 = IntegerField(0));
-    record9.add(i9 = IntegerField(0));
-    record9.add(i9 = IntegerField(0));
-    record9.add(i9 = IntegerField(0));
-    record9.add(i9 = IntegerField(0));
-    record9.add(i9 = IntegerField(0));
-    record9.add(i9 = IntegerField(0));
-    record9.add(i9 = IntegerField(1));
-
-    RawStringField s_a7(8);
-    memcpy(s_a7.raw_ptr(), raw_a, 8);
-    record9.add(s_a7);
-
-    RawStringField s_h8(8);
-    memcpy(s_h8.raw_ptr(), raw_h, 8);
-    record9.add(s_h8);
-
-    RawStringField s_a8(8);
-    memcpy(s_a8.raw_ptr(), raw_a, 8);
-    record9.add(s_a8);
+    for(unsigned int i=0; i<3; ++i){
+        RawStringField s(8);
+        memcpy(s.raw_ptr(), strings[i].c_str(), 8);
+        record.add(s);
+    }
 
     relation.add_record(record);
-    relation.add_record(record1);
-    relation.add_record(record2);
-    relation.add_record(record3);
-    relation.add_record(record4);
-    relation.add_record(record5);
-    relation.add_record(record6);
-    relation.add_record(record7);
-    relation.add_record(record8);
-    relation.add_record(record9);
+}
+
+Relation set_expected_relation(Meta meta){
+    Relation relation;
+
+    int numbers[] = {9, 0, 1, 1, 9, 9, 9, 9, 4, 1, 9, 18, 19};
+    string strings[] = {"HHHHHHH", "AAAAAAA", "HHHHHHH"};
+    set_record(numbers, strings, relation, meta);
+
+    int numbers1[] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3};
+    string strings1[] = {"HHHHHHH", "HHHHHHH", "HHHHHHH"};
+    set_record(numbers1, strings1, relation, meta);
+
+    int numbers2[] = {2, 2, 0, 2, 2, 2, 2, 2, 2, 0, 2, 4, 5};
+    string strings2[] = {"VVVVVVV", "VVVVVVV", "VVVVVVV"};
+    set_record(numbers2, strings2, relation, meta);
+
+    int numbers3[] = {3, 3, 1, 3, 3, 3, 3, 3, 3, 1, 3, 6, 7};
+    string strings3[] = {"OOOOOOO", "OOOOOOO", "OOOOOOO"};
+    set_record(numbers3, strings3, relation, meta);
+
+    int numbers4[] = {5, 4, 1, 1, 5, 5, 5, 5, 0, 1, 5, 10, 11};
+    string strings4[] = {"HHHHHHH", "AAAAAAA", "HHHHHHH"};
+    set_record(numbers4, strings4, relation, meta);
+
+    int numbers5[] = {7, 5, 1, 3, 7, 7, 7, 7, 2, 1, 7, 14, 15};
+    string strings5[] = {"OOOOOOO", "HHHHHHH", "OOOOOOO"};
+    set_record(numbers5, strings5, relation, meta);
+
+    int numbers6[] = {8, 6, 0, 0, 8, 8, 8, 8, 3, 0, 8, 16, 17};
+    string strings6[] = {"AAAAAAA", "VVVVVVV", "AAAAAAA"};
+    set_record(numbers6, strings6, relation, meta);
+
+    int numbers7[] = {4, 7, 0, 0, 4, 4, 4, 4, 4, 0, 4, 8, 9};
+    string strings7[] = {"AAAAAAA", "OOOOOOO", "AAAAAAA"};
+    set_record(numbers7, strings7, relation, meta);
+
+    int numbers8[] = {6, 8, 0, 2, 6, 6, 6, 6, 1, 0, 6, 12, 13};
+    string strings8[] = {"VVVVVVV", "AAAAAAA", "VVVVVVV"};
+    set_record(numbers8, strings8, relation, meta);
+
+    int numbers9[] = {0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1};
+    string strings9[] = {"AAAAAAA", "HHHHHHH", "AAAAAAA"};
+    set_record(numbers9, strings9, relation, meta);
 
     return relation;
 }
